@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+  <div class="top-nav">
+  <%= link_to image_tag("1.png"), "/" %>
+  <div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all">総合</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">プログラミング</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">デザイン</label>
+  <input id="search" type="radio" name="tab_item" checked>
+  <label class="tab_item sub_item" for="search">検索</label>
+  <input id="login" type="radio" name="tab_item">
+  <label class="tab_item sub_item" for="login">ログイン</label>
+  <input id="logout" type="radio" name="tab_item">
+  <label class="tab_item sub_item" for="logout">ログアウト</label>
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">総合の内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">プログラミングの内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">デザインの内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="search_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">サーチ画面</p>
+    </div>
+  </div>
+  <div class="tab_content" id="login_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">ログイン画面</p>
+    </div>
+  </div>
+  <div class="tab_content" id="logout_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">ログアウト画面</p>
+    </div>
+  </div>
+</div>
+</div>
+<%= yield %>
+</header>
+      <main>
+          <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+        <%= yield %>
+      </main>
+    <footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+
+</body>

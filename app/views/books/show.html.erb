@@ -1,0 +1,17 @@
+<p><%= @book.title %></p>
+<p><%= @book.genre_id %></p>
+<p><%= @book.synopsis %></p>
+<h2>コメント一覧</h2>
+<% @book.reviews.each do |review| %>
+  <%= review.customer.name %>
+  <% if review.customer == current_customer %>
+  <div>
+    <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
+  </div>
+  <% end %>
+  <% end %>
+<%= form_with(model:[@book, @review], local: true) do |f| %>
+ <%= f.text_area :review_content %>
+ <%= f.hidden_field :book_id, value: @book.id %>
+ <%= f.submit 'コメントする' %>
+<% end %>

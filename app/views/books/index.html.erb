@@ -1,0 +1,10 @@
+ <% @books.each do |book| %>
+  <div class="blog-item">
+   <section class="blog-text">
+    <p class="blog-date"><%= book.title %></p>
+    <p class="blog-date"><%= book.genre_id %></p>
+    <p class="blog-date"><%= book.synopsis %></p>
+    <%= link_to "詳細", book_path(book.id) %>
+   </section>
+  </div>
+  <% end %>
