@@ -1,10 +1,20 @@
- <% @books.each do |book| %>
-  <div class="blog-item">
-   <section class="blog-text">
-    <p class="blog-date"><%= book.title %></p>
-    <p class="blog-date"><%= book.genre_id %></p>
-    <p class="blog-date"><%= book.synopsis %></p>
-    <%= link_to "詳細", book_path(book.id) %>
-   </section>
+<div class="container takasa">
+  <div class="row">
+      <tbody align="center">
+          <div>
+            <% @books.each do |book| %>
+           <div class="blog-item">
+            <section class="blog-text">
+             <p class="blog-date">タイトル:<%= book.title %></p>
+             <p class="blog-date">ジャンル:<%= book.genre_id %></p>
+             <p class="blog-date">本紹介:<%= book.synopsis %></p>
+　　　　　　　<%= attachment_image_tag book, :image, :fill, 100, 100, format: 'jpeg' %>
+             <%= link_to "詳細", book_path(book.id) %>
+            </section>
+           </div>
+          </div>
+
+          <% end %>
+      </tbody>
   </div>
-  <% end %>
+</div>

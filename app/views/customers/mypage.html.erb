@@ -1,0 +1,23 @@
+<table>
+  <caption>ブックマーク一覧</caption>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th>本タイトル</th>
+      <th>あらすじ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.book.genre_id %></td>
+        <td>
+          <%= link_to book_path(favorite.book) do %>
+            <%= favorite.book.title %>
+          <% end %>
+        </td>
+        <td><%= favorite.book.synopsis %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

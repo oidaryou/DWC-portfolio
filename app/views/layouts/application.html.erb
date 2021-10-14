@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Books_log</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,21 +12,71 @@
 
   <body>
     <header>
+    <% if customer_signed_in? %>
   <div class="top-nav">
   <%= link_to image_tag("1.png"), "/" %>
   <div class="tabs">
   <input id="all" type="radio" name="tab_item" checked>
-  <label class="tab_item" for="all">総合</label>
+  <label class="tab_item" for="all">Book</label>
   <input id="programming" type="radio" name="tab_item">
-  <label class="tab_item" for="programming">プログラミング</label>
+  <label class="tab_item" for="programming">ランキング</label>
   <input id="design" type="radio" name="tab_item">
-  <label class="tab_item" for="design">デザイン</label>
+  <label class="tab_item" for="design">ユーザー</label>
+  <input id="search" type="radio" name="tab_item" checked>
+  <label class="tab_item sub_item" for="search">検索</label>
+  <input id="logout" type="radio" name="tab_item">
+  <label class="tab_item sub_item" for="logout">ログアウト</label>
+  <input id="customer" type="radio" name="tab_item">
+  <label class="tab_item sub_item" for="customer">ユーザー情報</label>
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <h1 class="c-txtsp"><%= link_to "本一覧", books_path %></h1>
+    </div>
+  </div>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <h3 class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></h3>
+      <h3 class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></h3>
+      <h3 class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></h3>
+    </div>
+  </div>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><%= link_to "ユーザー一覧", customers_path %></p>
+    </div>
+  </div>
+  <div class="tab_content" id="search_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">サーチ画面</p>
+    </div>
+  </div>
+  <div class="tab_content" id="logout_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></p>
+    </div>
+  </div>
+  <div class="tab_content" id="customer_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><%= link_to "ユーザー情報", customer_path(current_customer) %></p>
+      <p class="c-txtsp"><%= link_to "ブックマーク一覧", customers_mypage_path(current_customer) %></p>
+    </div>
+  </div>
+</div>
+</div>
+<% else %>
+<div class="top-nav">
+  <%= link_to image_tag("1.png"), "/" %>
+  <div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all">Book</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">ランキング</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">未定</label>
   <input id="search" type="radio" name="tab_item" checked>
   <label class="tab_item sub_item" for="search">検索</label>
   <input id="login" type="radio" name="tab_item">
   <label class="tab_item sub_item" for="login">ログイン</label>
-  <input id="logout" type="radio" name="tab_item">
-  <label class="tab_item sub_item" for="logout">ログアウト</label>
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
       <p class="c-txtsp">総合の内容がここに入ります</p>
@@ -49,24 +99,16 @@
   </div>
   <div class="tab_content" id="login_content">
     <div class="tab_content_description">
-      <p class="c-txtsp">ログイン画面</p>
-    </div>
-  </div>
-  <div class="tab_content" id="logout_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp">ログアウト画面</p>
+      <li class="c-txtsp"><%= link_to "新規登録", new_customer_registration_path %></li>
+      <li class="c-txtsp"><%= link_to "ログイン", new_customer_session_path %></li>
     </div>
   </div>
 </div>
 </div>
+<% end %>
 <%= yield %>
 </header>
-      <main>
-          <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
-        <%= yield %>
-      </main>
+
     <footer>
   <div class="container mt-5">
   	<div class="row">

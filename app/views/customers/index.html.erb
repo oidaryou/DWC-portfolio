@@ -1,0 +1,15 @@
+<h1>ユーザー一覧</h1>
+
+<div class="container takasa">
+  <div class="row">
+      <tbody align="center">
+          <div>
+            <% @customers.each do |customer| %>
+           <h3><%= customer.name %></h3>
+            <%= attachment_image_tag customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+            <%= link_to "詳細", customer_path(customer.id) %>
+            <% end %>
+      </tbody>
+  </div>
+</div>
+

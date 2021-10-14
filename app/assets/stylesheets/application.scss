@@ -87,7 +87,8 @@ input[name="tab_item"] {
 #design:checked ~ #design_content,
 #search:checked ~ #search_content,
 #login:checked ~ #login_content,
-#logout:checked ~ #logout_content{
+#logout:checked ~ #logout_content,
+#customer:checked ~ #customer_content{
   display: block;
 }
 
@@ -99,4 +100,9 @@ input[name="tab_item"] {
 
 .top-nav {
   display: flex;
+}
+
+.container {
+  text-align: center;
+  margin: 10px;
 }

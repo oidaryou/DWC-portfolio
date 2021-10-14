@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     review = current_customer.reviews.new(review_params)
     review.book_id = book.id
     review.save
-    redirect_to books_path
+    redirect_to book_path(params[:book_id])
   end
 
   def index
@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     Review.find_by(id: params[:id]).destroy
-    redirect_to books_path(params[:book_id])
+    redirect_to book_path(params[:book_id])
   end
 
   private

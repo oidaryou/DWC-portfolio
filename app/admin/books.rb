@@ -1,12 +1,12 @@
 ActiveAdmin.register Book do
-  permit_params :genre_id, :title, :synopsis, :image_id
+  permit_params :genre_id, :title, :synopsis, :image
 
   form do |f|
     f.inputs do
       f.input :genre_id
       f.input :title
       f.input :synopsis
-      f.input :image_id
+      f.attachment_field :image
     end
     f.actions
   end

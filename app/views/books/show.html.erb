@@ -1,17 +1,39 @@
 <p><%= @book.title %></p>
-<p><%= @book.genre_id %></p>
+<p><%= @book.genre.name %></p>
 <p><%= @book.synopsis %></p>
+<%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
 <h2>コメント一覧</h2>
 <% @book.reviews.each do |review| %>
-  <%= review.customer.name %>
+  <p>ユーザーネーム<%= review.customer.name %></p>
   <% if review.customer == current_customer %>
-  <div>
-    <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
-  </div>
+    <div>
+     <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
+    </div>
   <% end %>
+  <% if current_customer.likes.exists? %>
+    <%= link_to "いいね解除", book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete %>
+  <% else %>
+    <%= link_to "いいね", book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post %>
   <% end %>
+<% end %>
 <%= form_with(model:[@book, @review], local: true) do |f| %>
  <%= f.text_area :review_content %>
  <%= f.hidden_field :book_id, value: @book.id %>
  <%= f.submit 'コメントする' %>
 <% end %>
+
+
+<p>本一覧へ<%= link_to "back", books_path %></p>
+
+<tbody>
+  <tr>
+    <td><%= @book.title %></td>
+    <td><%= @book.genre_id %></td>
+    <td><%= @book.synopsis %></td>
+    <% if @book.favorited_by?(current_customer) %>
+      <td><%= link_to "ブックマークを外す", book_favorites_path(@book), method: :delete %></td>
+    <% else %>
+      <td><%= link_to "ブックマーク", book_favorites_path(@book), method: :book %></td>
+    <% end %>
+  </tr>
+</tbody>
