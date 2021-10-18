@@ -7,11 +7,9 @@ class ReviewsController < ApplicationController
     redirect_to book_path(params[:book_id])
   end
 
-  def index
-  end
+  def index; end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     Review.find_by(id: params[:id]).destroy

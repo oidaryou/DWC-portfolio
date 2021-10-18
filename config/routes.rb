@@ -6,19 +6,20 @@ Rails.application.routes.draw do
   get 'books_search' => 'books#search'
   get 'customers_search' => 'customers#search'
   get 'customers/mypage' => 'customers#mypage'
-  resources :favorites, only: [:create, :destroy]
-  resources :genres, only: [:create, :destroy, :index, :edit, :update]
-  resources :customers, only: [:show, :index, :edit, :update] do
-   get 'followings' => 'relationships#followings', as: 'followings'
-  get 'followers' => 'relationships#followers', as: 'followers'
- end
-  post 'follow/:id' => 'relationships#follow', as: 'follow'
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  get 'customers/like' => 'customers#like'
+  resources :favorites, only: %i[create destroy]
+  resources :genres, only: %i[create destroy index edit update]
+  resources :customers, only: %i[show index edit update] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+    end
+
   resources :books do
-   resource :favorites, only: [:create, :destroy]
-   resources :reviews, only: [:create, :destroy, :index, :edit] do
-    resources :likes, only: [:create, :destroy]
-   end
- end
+    resource :favorites, only: %i[create destroy]
+    resources :reviews, only: %i[create destroy index edit] do
+      resources :likes, only: %i[create destroy]
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

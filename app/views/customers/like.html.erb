@@ -1,0 +1,18 @@
+<table>
+  <caption>いいね一覧</caption>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th>本タイトル</th>
+      <th>あらすじ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @likes.each do |like| %>
+      <tr>
+        <td><%= like.review %></td>
+        <td>
+          <% end %>
+      </tr>
+  </tbody>
+</table>

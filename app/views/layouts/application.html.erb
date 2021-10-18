@@ -14,7 +14,7 @@
     <header>
     <% if customer_signed_in? %>
   <div class="top-nav">
-  <%= link_to image_tag("1.png"), "/" %>
+  <%= link_to image_tag("book.jpg",size: '200x200'), "/" %>
   <div class="tabs">
   <input id="all" type="radio" name="tab_item" checked>
   <label class="tab_item" for="all">Book</label>
@@ -35,9 +35,9 @@
   </div>
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
-      <h3 class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></h3>
-      <h3 class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></h3>
-      <h3 class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></h3>
+      <p class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></p>
+      <p class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></p>
+      <p class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></p>
     </div>
   </div>
   <div class="tab_content" id="design_content">
@@ -65,7 +65,7 @@
 </div>
 <% else %>
 <div class="top-nav">
-  <%= link_to image_tag("1.png"), "/" %>
+  <%= link_to image_tag("book.jpg",size: '200x200'), "/" %>
   <div class="tabs">
   <input id="all" type="radio" name="tab_item" checked>
   <label class="tab_item" for="all">Book</label>
@@ -84,9 +84,9 @@
   </div>
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
-      <h3 class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></h3>
-      <h3 class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></h3>
-      <h3 class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></h3>
+      <p class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></p>
+      <p class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></p>
+      <p class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></p>
     </div>
   </div>
   <div class="tab_content" id="design_content">

@@ -1,6 +1,6 @@
 <h1>ユーザー一覧</h1>
 
-<th>タイトル検索</th>
+<th>ユーザー名検索</th>
 <div class="search-form">
   <%= form_with url: customers_search_path, method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: @keyword %>

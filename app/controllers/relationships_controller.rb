@@ -1,10 +1,21 @@
 class RelationshipsController < ApplicationController
-  def follow
-   current_customer.follow(params[:id])
-   redirect_to customer_path
+  def create
+    current_customer.follow(params[:customer_id])
+    redirect_to request.referer
   end
-  def unfollow
-   current_customer.unfollow(params[:id])
-   redirect_to customer_path
+
+  def destroy
+    current_customer.unfollow(params[:customer_id])
+    redirect_to request.referer
+  end
+
+  def followings
+    customer = Customer.find(params[:customer_id])
+    @customers = customer.followings
+  end
+
+  def followers
+    customer = Customer.find(params[:customer_id])
+    @customers = customer.followers
   end
 end

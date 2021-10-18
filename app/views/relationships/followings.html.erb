@@ -1,12 +1,7 @@
-<h2>Follow Users</h2>
+<h2>フォロー一覧</h2>
 <% if @customers.exists? %>
-<div class="container">
- <div class="row">
-   <div class="col-md-12">
-  <table>
   <thead>
     <tr>
-      <th>image</th>
       <th>name</th>
       <th></th>
       <th></th>
@@ -15,18 +10,13 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= attachment_image_tag customer, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'40x40' %></td>
         <td><%= customer.name %></td>
         <td>フォロー数: <%= customer.followings.count %></td>
         <td>フォロワー数: <%= customer.followers.count %></td>
-        <td><%= link_to "Show", customer_path(customer.id) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-</div>
-</div>
-</div>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>

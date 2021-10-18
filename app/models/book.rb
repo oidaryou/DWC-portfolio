@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   attachment :image
 
   def self.books_search(keyword)
-  where(["title like?", "%#{keyword}%"])
+    where(['title like?', "%#{keyword}%"])
   end
 
   def favorited_by?(customer)

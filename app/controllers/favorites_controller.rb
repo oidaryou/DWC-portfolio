@@ -15,10 +15,10 @@ class FavoritesController < ApplicationController
     @book = Book.find(params[:book_id])
     favorite = @book.favorites.find_by(customer_id: current_customer.id)
     if favorite.present?
-        favorite.destroy
-        redirect_to request.referer
+      favorite.destroy
+      redirect_to request.referer
     else
-        redirect_to request.referer
+      redirect_to request.referer
     end
   end
 end

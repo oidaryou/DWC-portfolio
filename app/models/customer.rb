@@ -5,29 +5,32 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :following_customer, through: :follower, source: :followed
-  has_many :follower_customer, through: :followed, source: :follower
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+  # 被フォロー関係を通じて参照→followed_idをフォローしている人
+
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  # 【class_name: "Relationship"】は省略可能
+  has_many :followings, through: :relationships, source: :followed
+  # 与フォロー関係を通じて参照→follower_idをフォローしている人
 
   attachment :profile_image
 
-def follow(customer_id)
- follower.create(followed_id: customer_id)
-end
-# ユーザーのフォローを外す
-def unfollow(customer_id)
- follower.find_by(followed_id: customer_id).destroy
-end
-# フォロー確認をおこなう
-def following?(customer)
- following_customer.include?(customer)
-end
+  def follow(customer_id)
+    relationships.create(followed_id: customer_id)
+  end
 
-def self.customers_search(keyword)
-  where(["name like?", "%#{keyword}%"])
-end
+  def unfollow(customer_id)
+    relationships.find_by(followed_id: customer_id).destroy
+  end
+
+  def following?(customer)
+    followings.include?(customer)
+  end
+
+  def self.customers_search(keyword)
+    where(['name like?', "%#{keyword}%"])
+  end
 
 end
