@@ -20,7 +20,7 @@
        <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
       </div>
     　<% end %>
-    　<% if current_customer.likes.exists? %>
+    　<% if current_customer.likes.where(review_id: review.id).exists? %>
       <%= link_to book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete  do %>
       <i class="fas fa-heart unlike-btn"></i>
     　<% end %>
