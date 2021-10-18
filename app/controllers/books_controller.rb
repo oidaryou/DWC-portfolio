@@ -3,7 +3,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.page(params[:page]).per(4)
+    @favorites_count = Favorite.where(book_id: @book).count
   end
 
   def create
@@ -22,6 +23,12 @@ class BooksController < ApplicationController
   end
 
   def destory
+  end
+
+  def search
+  @books = Book.books_search(params[:keyword])
+  @keyword = params[:keyword]
+  render "index"
   end
 
   private

@@ -1,15 +1,22 @@
-<h1><%= t("title.followings") %></h1>
-
-<table>
-  <% @followings.each do |user| %>
+<h2>Follower Users</h2>
+<% if @users.exists? %>
+  <thead>
     <tr>
-      <td>
-        <% if user.icon.attached? %>
-          <%= image_tag user.icon.variant(resize_to_limit: [30, 30]) %>
-        <% end %>
-      </td>
-      <td><%= link_to user.username, user_path(user) %></td>
-      <td><%= user.profile %></td>
+      <th>name</th>
+      <th></th>
+      <th></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td>フォロー数: <%= user.followings.count %></td>
+        <td>フォロワー数: <%= user.followers.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

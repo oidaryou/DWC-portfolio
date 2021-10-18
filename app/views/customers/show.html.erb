@@ -1,3 +1,4 @@
+<% if customer_signed_in? %>
 <div>
   <h3><%= @customer.name %></h3>
   <%= attachment_image_tag @customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
@@ -17,3 +18,21 @@
   <% end %>
 <% end %>
 
+<% else %>
+
+<div>
+  <h3><%= @customer.name %></h3>
+  <%= attachment_image_tag @customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+   <% if @customer.id == current_customer.id %>
+    <p><%= link_to "プロフィール編集", edit_customer_path(@customer) %></p>
+  <% end %>
+</div>
+
+
+<p><%= "フォロー数: #{@customer.follower.count}" %></p>
+<p><%= "フォロワー数: #{@customer.followed.count}" %></p>
+<% end %>
+
+<p class="c-txtsp"><%= link_to "ブックマーク一覧", customers_mypage_path(@customer.id) %></p>
+
+<%= link_to "フォロー一覧", customer_followings_path(@customer.id) %>

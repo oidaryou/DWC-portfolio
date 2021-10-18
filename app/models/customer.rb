@@ -25,4 +25,9 @@ end
 def following?(customer)
  following_customer.include?(customer)
 end
+
+def self.customers_search(keyword)
+  where(["name like?", "%#{keyword}%"])
+end
+
 end

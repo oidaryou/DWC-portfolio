@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :customers
   root to: 'homes#top'
+  get 'books_search' => 'books#search'
+  get 'customers_search' => 'customers#search'
   get 'customers/mypage' => 'customers#mypage'
   resources :favorites, only: [:create, :destroy]
   resources :genres, only: [:create, :destroy, :index, :edit, :update]
-  resources :customers, only: [:show, :index, :edit, :update]
+  resources :customers, only: [:show, :index, :edit, :update] do
+   get 'followings' => 'relationships#followings', as: 'followings'
+  get 'followers' => 'relationships#followers', as: 'followers'
+ end
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   resources :books do

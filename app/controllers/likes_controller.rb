@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     @like = current_customer.likes.new(review_id: params[:review_id])
     if @like.save
       flash[:success] = "いいね登録しました"
-      redirect_to "/"
+      redirect_to request.referer
     end
   end
 
@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     @like = Like.find_by(customer_id: current_customer.id, review_id: params[:review_id])
     if @like.destroy
       flash[:success] = "いいね解除しました"
-      redirect_to "/"
+      redirect_to request.referer
     end
   end
 

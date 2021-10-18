@@ -72,24 +72,26 @@
   <input id="programming" type="radio" name="tab_item">
   <label class="tab_item" for="programming">ランキング</label>
   <input id="design" type="radio" name="tab_item">
-  <label class="tab_item" for="design">未定</label>
+  <label class="tab_item" for="design">ユーザー一覧</label>
   <input id="search" type="radio" name="tab_item" checked>
   <label class="tab_item sub_item" for="search">検索</label>
   <input id="login" type="radio" name="tab_item">
   <label class="tab_item sub_item" for="login">ログイン</label>
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
-      <p class="c-txtsp">総合の内容がここに入ります</p>
+      <h1 class="c-txtsp"><%= link_to "本一覧", books_path %></h1>
     </div>
   </div>
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
-      <p class="c-txtsp">プログラミングの内容がここに入ります</p>
+      <h3 class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></h3>
+      <h3 class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></h3>
+      <h3 class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></h3>
     </div>
   </div>
   <div class="tab_content" id="design_content">
     <div class="tab_content_description">
-      <p class="c-txtsp">デザインの内容がここに入ります</p>
+      <p class="c-txtsp"><%= link_to "ユーザー一覧", customers_path %></p>
     </div>
   </div>
   <div class="tab_content" id="search_content">

@@ -1,0 +1,9 @@
+<% if current_customer.likes.exists? %>
+    <%= link_to book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete, remote: true  do %>
+    <i class="fas fa-heart unlike-btn"></i>
+  <% end %>
+  <% else %>
+    <%= link_to book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post, remote: true do %>
+    <i class="far fa-heart like-btn" ></i>
+  <% end %>
+<% end %>

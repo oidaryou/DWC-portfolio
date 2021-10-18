@@ -1,3 +1,4 @@
+<% if customer_signed_in? %>
 <p><%= @book.title %></p>
 <p><%= @book.genre.name %></p>
 <p><%= @book.synopsis %></p>
@@ -11,9 +12,13 @@
     </div>
   <% end %>
   <% if current_customer.likes.exists? %>
-    <%= link_to "いいね解除", book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete %>
+    <%= link_to book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete  do %>
+    <i class="fas fa-heart unlike-btn"></i>
+  <% end %>
   <% else %>
-    <%= link_to "いいね", book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post %>
+    <%= link_to book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post do %>
+    <i class="far fa-heart like-btn" ></i>
+  <% end %>
   <% end %>
 <% end %>
 <%= form_with(model:[@book, @review], local: true) do |f| %>
@@ -31,9 +36,28 @@
     <td><%= @book.genre_id %></td>
     <td><%= @book.synopsis %></td>
     <% if @book.favorited_by?(current_customer) %>
-      <td><%= link_to "ブックマークを外す", book_favorites_path(@book), method: :delete %></td>
+      <%= link_to book_favorites_path(@book), method: :delete do %>
+      <i class="fas fa-star"></i>
+      <% end %>
     <% else %>
-      <td><%= link_to "ブックマーク", book_favorites_path(@book), method: :book %></td>
+      <%= link_to book_favorites_path(@book), method: :book do%>
+      <i class="far fa-star"></i>
+      <% end %>
     <% end %>
   </tr>
 </tbody>
+
+<% else %>
+
+<p><%= @book.title %></p>
+<p><%= @book.genre.name %></p>
+<p><%= @book.synopsis %></p>
+<%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
+<h2>コメント一覧</h2>
+<% @book.reviews.each do |review| %>
+  <p>ユーザーネーム<%= review.customer.name %></p>
+<% end %>
+
+
+<p>本一覧へ<%= link_to "back", books_path %></p>
+<% end %>

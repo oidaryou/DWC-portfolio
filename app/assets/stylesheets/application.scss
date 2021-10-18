@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
 .image1 {
   background-image: url(image1.jpg);
 }
@@ -102,7 +106,14 @@ input[name="tab_item"] {
   display: flex;
 }
 
-.container {
-  text-align: center;
-  margin: 10px;
+.box {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(4, minmax(160px, 260px));
+  margin-top: 6%;
+  margin-bottom: 50px;
+}
+
+.card{
+  text-align:center
 }

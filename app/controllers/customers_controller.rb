@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(4)
   end
 
   def show
@@ -24,6 +24,13 @@ class CustomersController < ApplicationController
 
   def mypage
   @favorites = Favorite.where(customer_id: current_customer.id)
+  end
+
+
+  def search
+  @customers = Customer.customers_search(params[:keyword]).page(params[:page]).per(8)
+  @keyword = params[:keyword]
+  render "index"
   end
 
   private

@@ -1,20 +1,35 @@
-<div class="container takasa">
-  <div class="row">
-      <tbody align="center">
-          <div>
-            <% @books.each do |book| %>
-           <div class="blog-item">
-            <section class="blog-text">
-             <p class="blog-date">タイトル:<%= book.title %></p>
-             <p class="blog-date">ジャンル:<%= book.genre_id %></p>
-             <p class="blog-date">本紹介:<%= book.synopsis %></p>
-　　　　　　　<%= attachment_image_tag book, :image, :fill, 100, 100, format: 'jpeg' %>
-             <%= link_to "詳細", book_path(book.id) %>
-            </section>
-           </div>
-          </div>
-
-          <% end %>
-      </tbody>
-  </div>
+<th>タイトル検索</th>
+<div class="search-form">
+  <%= form_with url: books_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
 </div>
+
+<table>
+  <caption>本一覧</caption>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th>本タイトル</th>
+      <th>あらすじ</th>
+      <th>ブックマーク数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr class="books">
+        <td><%= book.genre.name %></td>
+        <td>
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+        </td>
+        <td><%= book.synopsis %></td>
+        <td><%= book.favorites.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @books %>
