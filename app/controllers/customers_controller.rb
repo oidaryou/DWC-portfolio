@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    favorites = Favorite.where(customer_id: current_customer.id).pluck(:book_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    favorites = Favorite.where(customer_id: current_customer.id).pluck(:book_id)
     @favorite_list = Book.find(favorites)
 
   end

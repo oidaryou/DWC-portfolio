@@ -1,0 +1,35 @@
+<th>タイトル検索</th>
+<div class="search-form">
+  <%= form_with url: books_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+
+<table>
+  <caption>小説一覧</caption>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th>本タイトル</th>
+      <th>あらすじ</th>
+      <th>ブックマーク数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @book_s.each do |book_s| %>
+      <tr class="books">
+        <td><%= book_s.genre.name %></td>
+        <td>
+          <%= link_to book_path(book_s.id) do %>
+            <%= book_s.title %>
+          <% end %>
+        </td>
+        <td><%= book_s.synopsis %></td>
+        <td><%= book_s.favorites.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @books %>

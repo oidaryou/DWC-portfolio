@@ -30,14 +30,15 @@
   <label class="tab_item sub_item" for="customer">ユーザー情報</label>
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
-      <h1 class="c-txtsp"><%= link_to "本一覧", books_path %></h1>
+      <p class="c-txtsp"><%= link_to "本一覧", books_path %></p>
+      <p class="c-txtsp"><%= link_to "小説一覧", books_genre_s_path %></p>
+      <p class="c-txtsp"><%= link_to "漫画一覧", books_genre_m_path %></p>
+      <p class="c-txtsp"><%= link_to "雑誌一覧", books_genre_z_path %></p>
     </div>
   </div>
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></p>
-      <p class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></p>
-      <p class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></p>
+      <p class="c-txtsp"><%= link_to "ランキングTOP3", books_rank_path %></p>
     </div>
   </div>
   <div class="tab_content" id="design_content">
@@ -79,19 +80,20 @@
   <label class="tab_item sub_item" for="login">ログイン</label>
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
-      <h1 class="c-txtsp"><%= link_to "本一覧", books_path %></h1>
+      <p class="c-txtsp"><%= link_to "本一覧", books_path %></p>
+      <p class="c-txtsp"><%= link_to "小説一覧", books_genre_s_path %></p>
+      <p class="c-txtsp"><%= link_to "漫画一覧", books_genre_m_path %></p>
+      <p class="c-txtsp"><%= link_to "雑誌一覧", books_genre_z_path %></p>
     </div>
   </div>
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "小説ランキングTOP10", books_path %></p>
-      <p class="c-txtsp"><%= link_to "漫画ランキングTOP10", books_path %></p>
-      <p class="c-txtsp"><%= link_to "雑誌ランキングTOP10", books_path %></p>
+      <p class="c-txtsp"><%= link_to "ランキングTOP3", books_path %></p>
     </div>
   </div>
   <div class="tab_content" id="design_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "ユーザー一覧", customers_path %></p>
+      <p class="c-txtsp"></p>
     </div>
   </div>
   <div class="tab_content" id="search_content">

@@ -4,7 +4,7 @@
   <%= attachment_image_tag @customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
    <% if @customer.id == current_customer.id %>
     <p><%= link_to "プロフィール編集", edit_customer_path(@customer) %></p>
-  <% end %>
+   <% end %>
 </div>
 
 <% if current_customer.following?(@customer) %>
@@ -30,5 +30,10 @@
 
 <p class="c-txtsp"><%= link_to "ブックマーク一覧", customers_mypage_path(@customer.id) %></p>
 
-<%= link_to "フォロー一覧", customer_followings_path(@customer.id) %>
+<%= link_to customer_followings_path(@customer.id) do %>
+フォロー数: <%= @customer.followings.count %>
+<% end %>
+<%= link_to customer_followers_path(@customer.id) do %>
+フォロワー数: <%= @customer.followers.count %>
+<% end %>
 <%= link_to "いいね一覧", customers_like_path(@customer.id) %>

@@ -1,9 +1,5 @@
 <% if customer_signed_in? %>
-  <p><%= @book.title %></p>
-  <p><%= @book.genre.name %></p>
-  <p><%= @book.synopsis %></p>
-  <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
-  <% if @book.favorited_by?(current_customer) %>
+  <p><%= @book.title %><% if @book.favorited_by?(current_customer) %>
       <%= link_to book_favorites_path(@book), method: :delete do %>
       <i class="fas fa-star"></i>
       <% end %>
@@ -11,47 +7,80 @@
       <%= link_to book_favorites_path(@book), method: :book do%>
       <i class="far fa-star"></i>
       <% end %>
-    <% end %>
-  <h2>コメント一覧</h2>
-  <% @book.reviews.each do |review| %>
-    <p>ユーザーネーム<%= review.customer.name %></p>
-  　　<% if review.customer == current_customer %>
-      <div>
-       <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
-      </div>
-    　<% end %>
-    　<% if current_customer.likes.where(review_id: review.id).exists? %>
-      <%= link_to book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete  do %>
-      <i class="fas fa-heart unlike-btn"></i>
-    　<% end %>
-  <% else %>
-      <%= link_to book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post do %>
-      <i class="far fa-heart like-btn"></i>
-    <% end %>
-    <% end %>
-  <% end %>
-    <%= form_with(model:[@book, @review], local: true) do |f| %>
+    <% end %></p>
+  <p><%= @book.genre.name %></p>
+  <p><%= @book.synopsis %></p>
+  <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
+  <%= form_with(model:[@book, @review], local: true) do |f| %>
     <%= f.text_area :review_content %>
     <%= f.hidden_field :book_id, value: @book.id %>
     <%= f.submit 'コメントする' %>
   <% end %>
-
-
-    <p>本一覧へ<%= link_to "back", books_path %></p>
+  <table>
+  <thead>
+    <tr>
+      <th>ユーザーネーム</th>
+      <th>レビュー内容</th>
+      <th>いいね数</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @book.reviews.each do |review| %>
+      <tr class="books">
+        <td><%= review.customer.name %></td>
+        <td><%#= review.review %></td>
+        <td><%= review.likes.count %></td>
+        <td><% if review.customer == current_customer %>
+          <div>
+           <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
+          </div>
+        </td>
+        <td><% if current_customer.likes.where(review_id: review.id).exists? %>
+          <%= link_to book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete do %>
+          <i class="fas fa-heart"></i>
+        　<% end %>
+      　　<% else %>
+          <%= link_to book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post do %>
+          <i class="far fa-heart"></i>
+       　　 <% end %></td>
+        　<% end %>
+          </tr>
+        <% end %>
+        <% end %>
+  </tbody>
+</table>
 
   <% else %>
 
-    <p><%= @book.title %></p>
-    <p><%= @book.genre.name %></p>
-    <p><%= @book.synopsis %></p>
-    <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
-    <h2>コメント一覧</h2>
-  <% @book.reviews.each do |review| %>
-    <p>ユーザーネーム<%= review.customer.name %></p>
-  <% end %>
-
-
+  <p><%= @book.title %></p>
+  <p><%= @book.genre.name %></p>
+  <p><%= @book.synopsis %></p>
+  <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
+  <table>
+  <thead>
+    <tr>
+      <th>ユーザーネーム</th>
+      <th>レビュー内容</th>
+      <th>いいね数</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @book.reviews.each do |review| %>
+      <tr class="books">
+        <td><%= review.customer.name %></td>
+        <td><%#= review.review %></td>
+        <td><%= review.likes.count %></td>
+        <td></td>
+        <td></td>
+        　<% end %>
+          </tr>
+        <% end %>
+  </tbody>
+</table>
   <p>本一覧へ<%= link_to "back", books_path %></p>
-<% end %>
-
-
