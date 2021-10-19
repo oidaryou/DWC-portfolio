@@ -12,7 +12,7 @@
   <p><%= @book.synopsis %></p>
   <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
   <%= form_with(model:[@book, @review], local: true) do |f| %>
-    <%= f.text_area :review_content %>
+    <%= f.text_area :review %>
     <%= f.hidden_field :book_id, value: @book.id %>
     <%= f.submit 'コメントする' %>
   <% end %>
@@ -31,7 +31,7 @@
     <% @book.reviews.each do |review| %>
       <tr class="books">
         <td><%= review.customer.name %></td>
-        <td><%#= review.review %></td>
+        <td><%= review.review %></td>
         <td><%= review.likes.count %></td>
         <td><% if review.customer == current_customer %>
           <div>
