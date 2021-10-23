@@ -34,7 +34,7 @@
 }
 
 #container{
-  height: 500px;
+  height: 700px;
 }
 
 
@@ -125,4 +125,69 @@ input[name="tab_item"] {
 .c-txtsp {
   display: inline-block;
   margin: 0 20px;
+}
+
+.rank{
+  text-align:center
+}
+
+.books{
+  flex-direction: row;
+}
+
+.hyou{
+  width: 800px;
+  border: 3px solid;
+  font-weight: 3px;
+  background-color: white;
+  th{
+    border: 3px solid;
+  }
+  tr{
+    height: 75px;
+    border-bottom: 3px solid;
+  }
+  td{
+    border-left: 3px solid;
+  }
+}
+
+.synopsis{
+  max-width: 500px;
+}
+
+.title{
+  max-width: 150px;
+  letter-spacing: 0.5px;
+}
+
+tr{
+  border-bottom: 1px solid;
+  padding: 2px;
+}
+
+tr:nth-child(even){
+  background :rgb(240,219,186);
+}
+
+.book_show{
+  display :flex;
+}
+
+body{
+  background-color: rgb(247,245,230);
+}
+
+.customer_show{
+  display:flex;
+  justify-content: center;
+  .customer_image{
+    width :600px;
+    margin-top: 100px;
+    border-radius: 50% 50% 0 50%;
+  }
+  h3{
+    margin-top: 100px;
+    border-bottom: 3px;
+  }
 }

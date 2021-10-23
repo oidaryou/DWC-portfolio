@@ -3,16 +3,17 @@
   <thead>
     <tr>
       <th>ジャンル</th>
-      <th>本タイトル</th>
-      <th>あらすじ</th>
+      <th>タイトル</th>
+      <th>レビュー</th>
     </tr>
   </thead>
   <tbody>
     <% @likes.each do |like| %>
       <tr>
-        <td><%= like.review %></td>
-        <td>
-          <% end %>
+        <td><%= like.review.book.genre.name %></td>
+        <td><%= like.review.book.title %></td>
+        <td><%= like.review.review %></td>
       </tr>
+    <% end %>
   </tbody>
 </table>

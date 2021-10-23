@@ -1,6 +1,9 @@
 <th>タイトル検索</th>
 <div class="search-form">
   <%= form_with url: books_search_path, method: :get, local: true do |f| %>
+    <% if @genre_id.present? %>
+      <%= f.hidden_field :genre_id, :value => @genre_id %>
+    <% end %>
     <%= f.text_field :keyword, value: @keyword %>
     <%= f.submit "検索" %>
   <% end %>
@@ -20,12 +23,12 @@
     <% @books.each do |book| %>
       <tr class="books">
         <td><%= book.genre.name %></td>
-        <td>
+        <td class="title">
           <%= link_to book_path(book.id) do %>
             <%= book.title %>
           <% end %>
         </td>
-        <td><%= book.synopsis %></td>
+        <td class="synopsis"><%= book.synopsis.truncate(70) %></td>
         <td><%= book.favorites.count %></td>
       </tr>
     <% end %>

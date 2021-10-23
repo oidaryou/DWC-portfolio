@@ -1,55 +1,61 @@
 <% if customer_signed_in? %>
-  <p><%= @book.title %><% if @book.favorited_by?(current_customer) %>
-      <%= link_to book_favorites_path(@book), method: :delete do %>
-      <i class="fas fa-star"></i>
-      <% end %>
-    <% else %>
-      <%= link_to book_favorites_path(@book), method: :book do%>
-      <i class="far fa-star"></i>
-      <% end %>
-    <% end %></p>
-  <p><%= @book.genre.name %></p>
-  <p><%= @book.synopsis %></p>
-  <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
-  <%= form_with(model:[@book, @review], local: true) do |f| %>
+<div class="book_show">
+  <div class = "row mt-4">
+    <div class = "col-sm-5">
+      <div>お気に入り</div>
+      <div id="favorite"><%= render 'books/favorite', book: @book %></div>
+        <%= attachment_image_tag @book, :image, :fill, 300, 300, format: 'jpeg' %>
+          <table class="hyou">
+            <tbody align="center">
+              <tr>
+                <td width="200">タイトル</td>
+                <td>
+                  <%= @book.title%>
+                </td>
+              </tr>
+
+              <tr>
+                 <td>ジャンル</td>
+                <td>
+                  <%= @book.genre.name %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>あらすじ</td>
+                <td><%= @book.synopsis %></td>
+              </tr>
+            </tbody>
+           </table>
+      </div>
+    </div>
+  </div>
+</div>
+  <%= form_with(model:[@book, @review], data: {remote: true} ) do |f| %>
     <%= f.text_area :review %>
     <%= f.hidden_field :book_id, value: @book.id %>
     <%= f.submit 'コメントする' %>
   <% end %>
+
   <table>
   <thead>
     <tr>
       <th>ユーザーネーム</th>
       <th>レビュー内容</th>
       <th>いいね数</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      </tr>
+    </tr>
   </thead>
   <tbody>
-    <% @book.reviews.each do |review| %>
-      <tr class="books">
-        <td><%= review.customer.name %></td>
-        <td><%= review.review %></td>
-        <td><%= review.likes.count %></td>
-        <td><% if review.customer == current_customer %>
-          <div>
-           <%= link_to "削除", book_review_path(review.book, review), method: :delete %>
-          </div>
-        </td>
-        <td><% if current_customer.likes.where(review_id: review.id).exists? %>
-          <%= link_to book_review_like_path(:book_id => @book.id, :review_id => review.id), method: :delete do %>
-          <i class="fas fa-heart"></i>
-        　<% end %>
-      　　<% else %>
-          <%= link_to book_review_likes_path(:book_id => @book.id, :review_id => review.id), method: :post do %>
-          <i class="far fa-heart"></i>
-       　　 <% end %></td>
-        　<% end %>
-          </tr>
-        <% end %>
-        <% end %>
+      <% @book.reviews.each do |review| %>
+        <tr class="">
+          <td><%= link_to customer_path(review.customer.id) do %>
+               <%= review.customer.name %>
+            <% end %>
+          </td>
+          <td><%= review.review %></td>
+          <td id="review_<%= review.id %>"><%= render 'books/like', review: review %></td>
+        </tr>
+      <% end %>
   </tbody>
 </table>
 

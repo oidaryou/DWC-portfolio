@@ -21,7 +21,8 @@ class BooksController < ApplicationController
   def destory; end
 
   def search
-    @books = Book.books_search(params[:keyword])
+    @genre_id = params[:genre_id]
+    @books = Book.books_search(params[:keyword], @genre_id).page(params[:page]).per(8)
     @keyword = params[:keyword]
     render 'index'
   end
@@ -43,7 +44,9 @@ class BooksController < ApplicationController
 
   def rank
     @all_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').limit(3).pluck(:book_id))
-    @book_s = Book.where( genre_id: "1")
+    @novel_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id)).select{ |book| book.genre.id == 1}
+    @comic_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id)).select{ |book| book.genre.id == 2}
+    @magazine_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id)).select{ |book| book.genre.id == 3}
   end
 
   private

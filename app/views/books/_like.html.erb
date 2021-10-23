@@ -1,0 +1,14 @@
+  <% if review.customer == current_customer %>
+    <%= review.likes.count %>
+    <%= link_to "削除", book_review_path(review.book, review), method: :delete, remote: true %>
+   <% else %>
+      <% if current_customer.likes.where(review_id: review.id).exists? %>
+        <%= link_to book_review_like_path(review.book, review, 1), method: :delete, remote: true, style: 'text-decoration: none;' do %>
+          <i class="fas fa-heart"><%= review.likes.count %></i>
+    　   <% end %>
+  　　  <% else %>
+        <%= link_to book_review_likes_path(review.book,review), method: :post, remote: true, style: 'text-decoration: none;' do %>
+          <i class="far fa-heart"><%= review.likes.count %></i>
+   　　    <% end %>
+    　 <% end %>
+  <% end %>
