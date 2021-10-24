@@ -28,18 +28,15 @@ class BooksController < ApplicationController
   end
 
   def genre_s
-    @books = Book.page(params[:page]).per(8)
-    @book_s = Book.where( genre_id: "1")
+    @books = Book.where( genre_id: "1").page(params[:page]).per(8)
   end
 
   def genre_m
-    @books = Book.page(params[:page]).per(8)
-    @book_m = Book.where( genre_id: "2")
+    @books = Book.where( genre_id: "2").page(params[:page]).per(8)
   end
 
   def genre_z
-    @books = Book.page(params[:page]).per(8)
-    @book_z = Book.where( genre_id: "3")
+    @books = Book.where( genre_id: "3").page(params[:page]).per(8)
   end
 
   def rank

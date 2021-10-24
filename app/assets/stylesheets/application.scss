@@ -41,7 +41,7 @@
 .tabs {
   margin-top: 50px;
   padding-bottom: 40px;
-  background-color: #fff;
+  background-color: rgb(224,157,53);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 100%;
   margin: 0 auto;}
@@ -50,7 +50,6 @@
 .tab_item {
   width: calc((100% - 450px) / 3);
   height: 50px;
-  border-bottom: 3px solid #5ab4bd;
   background-color: #d9d9d9;
   line-height: 50px;
   font-size: 16px;
@@ -98,7 +97,7 @@ input[name="tab_item"] {
 
 /*選択されているタブのスタイルを変える*/
 .tabs input:checked + .tab_item {
-  background-color: #5ab4bd;
+  background-color: rgb(111,68,0);
   color: #fff;
 }
 
@@ -184,10 +183,30 @@ body{
   .customer_image{
     width :600px;
     margin-top: 100px;
-    border-radius: 50% 50% 0 50%;
   }
   h3{
     margin-top: 100px;
-    border-bottom: 3px;
+    border: 3px;
   }
+}
+
+.c_box{
+  justify-content: center;
+  display:flex;
+}
+
+.box_box{
+  border: 1px solid;
+  padding: 20px;
+  margin: 40px 30px;
+  border-radius: 5px;
+}
+
+.header_top{
+  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+  text-align:center;
+}
+
+.ranking{
+  display: flex;
 }

@@ -16,7 +16,7 @@
             <%= favorite.book.title %>
           <% end %>
         </td>
-        <td class="synopsis"><%= favorite.book.synopsis %></td>
+        <td class="synopsis"><%= favorite.book.synopsis.truncate(70) %></td>
       </tr>
     <% end %>
   </tbody>

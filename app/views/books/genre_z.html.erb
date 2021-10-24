@@ -18,16 +18,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @book_z.each do |book_z| %>
+    <% @books.each do |books| %>
       <tr class="books">
-        <td><%= book_z.genre.name %></td>
+        <td><%= books.genre.name %></td>
         <td class="title">
-          <%= link_to book_path(book_z.id) do %>
-            <%= book_z.title %>
+          <%= link_to book_path(books.id) do %>
+            <%= books.title %>
           <% end %>
         </td>
-        <td class="synopsis"><%= book_z.synopsis.truncate(30) %></td>
-        <td><%= book_z.favorites.count %></td>
+        <td class="synopsis"><%= books.synopsis.truncate(70) %></td>
+        <td><%= books.favorites.count %></td>
       </tr>
     <% end %>
   </tbody>

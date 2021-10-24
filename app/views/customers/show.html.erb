@@ -1,23 +1,30 @@
 <div class="customer_show">
     <div class="customer_image"><%= attachment_image_tag @customer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %></div>
-    <% if @customer.id == current_customer.id %>
-      <h3 class="name"><%= @customer.name %></h3>
-    <% end %>
-  </div>
-  <p><%= link_to "プロフィール編集", edit_customer_path(@customer) %></p>
-  <% if @customer.id == current_customer.id %>
+    <h3 class="name"><%= @customer.name %></h3>
+</div>
+<div class="customer_box">
+  <div class="c_box">
+  <div class="box_box"><% if @customer.id == current_customer.id %>
+<%= link_to "プロフィール編集", edit_customer_path(@customer), style: 'text-decoration: none;' %>
   <% else %>
     <% if current_customer.following?(@customer) %>
-      <%= link_to "Unfollow", customer_relationships_path(@customer.id), method: :delete %>
+      <%= link_to "フォロー解除", customer_relationships_path(@customer.id), method: :delete, style: 'text-decoration: none;' %>
     <% else %>
-      <%= link_to "Follow", customer_relationships_path(@customer.id), method: :post %>
+      <%= link_to "フォロー登録", customer_relationships_path(@customer.id), method: :post, style: 'text-decoration: none;' %>
     <% end %>
-  <% end %>
-  <%= link_to customer_followings_path(@customer.id) do %>
-フォロー数: <%= @customer.followings.count %>
-<% end %>
-<%= link_to customer_followers_path(@customer.id) do %>
-フォロワー数: <%= @customer.followers.count %>
-<% end %>
-<p class="c-txtsp"><%= link_to "ブックマーク一覧", customers_mypage_path(@customer.id) %></p>
-<%= link_to "いいね一覧", customers_like_path(@customer.id) %>
+  <% end %></div>
+  <div class="box_box">
+    <%= link_to customer_followings_path(@customer.id), style: 'text-decoration: none;' do %>
+      フォロー数: <%= @customer.followings.count %>
+    <% end %>
+  </div>
+  <div class="box_box">
+    <%= link_to customer_followers_path(@customer.id), style: 'text-decoration: none;' do %>
+    フォロワー数: <%= @customer.followers.count %>
+    <% end %>
+  </div>
+  <div class="box_box">
+  <%= link_to "ブックマーク一覧", customers_mypage_path(@customer.id), style: 'text-decoration: none;' %></div>
+  <div class="box_box"><%= link_to "いいね一覧", customers_like_path(@customer.id), style: 'text-decoration: none;' %></div>
+  </div>
+</div>

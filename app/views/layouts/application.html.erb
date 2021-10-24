@@ -13,8 +13,8 @@
   <body>
     <header>
     <% if customer_signed_in? %>
-  <div class="top-nav">
-  <%= link_to image_tag("book.jpg",size: '200x200'), "/" %>
+    <h1 class="header_top"><%= link_to 'Books_log', "/", style: 'text-decoration: none;' %>
+    </h1>
   <div class="tabs">
   <input id="all" type="radio" name="tab_item" checked>
   <label class="tab_item" for="all">Book</label>
@@ -118,7 +118,7 @@
   <div class="container mt-5">
   	<div class="row">
     	<div class="mx-auto">
-    		<p>CopyRight Infratop.inc</p>
+    		<p>DWC-Books_log.inc</p>
     	</div>
     </div>
   </div>

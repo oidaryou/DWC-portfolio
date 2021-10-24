@@ -11,8 +11,10 @@
     <% @likes.each do |like| %>
       <tr>
         <td><%= like.review.book.genre.name %></td>
-        <td><%= like.review.book.title %></td>
-        <td><%= like.review.review %></td>
+        <td><%= link_to book_path(like.review.book) do %>
+        <%= like.review.book.title %>
+        <% end %></td>
+        <td><%= like.review.review.truncate(70) %></td>
       </tr>
     <% end %>
   </tbody>

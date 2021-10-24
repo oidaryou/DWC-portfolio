@@ -1,7 +1,13 @@
 <h1 class="rank">小説ランキングTOP3！</h1>
+<div class="ranking">
+  <div>1位</div>
+  <div>2位</div>
+  <div>3位</div>
+</div>
 <div class="container box">
     <% @novel_ranks.each.with_index(1) do |book, i| %>
       <% if i < 4 %>
+      <%#= "#{i}位" %>
         <div class="card mb-3">
             <i class="fas fa-star"><%= book.favorites.count %></i>
             <%= link_to book_path(book.id) do %>
