@@ -1,13 +1,8 @@
-<div class="customer_show">
-    <div class="customer_image"><%= attachment_image_tag @customer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", class: "circle" %></div>
-    <h3 class="name"><%= @customer.name %></h3>
-</div>
-
-<div class="row">
+<div class="row customer_show">
   <div class="col-md-6 customer_image">
     <%= attachment_image_tag @customer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", class: "d-block mx-auto circle" %>
   </div>
-  <div class="col-md-6 d-flex align-self-center justify-content-center">
+  <div class="col-md-6 d-flex align-self-center">
     <span class="name">
       <%= @customer.name %>
     </span>
