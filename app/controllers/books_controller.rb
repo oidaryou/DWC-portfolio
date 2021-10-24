@@ -44,6 +44,7 @@ class BooksController < ApplicationController
     @novel_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id)).select{ |book| book.genre.id == 1}
     @comic_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id)).select{ |book| book.genre.id == 2}
     @magazine_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id)).select{ |book| book.genre.id == 3}
+    @font_awesomes = ["fas fa-crown", "fas fa-crown", "fas fa-crown"]
   end
 
   private

@@ -8,6 +8,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
   </head>
 
   <body>
@@ -22,8 +25,6 @@
   <label class="tab_item" for="programming">ランキング</label>
   <input id="design" type="radio" name="tab_item">
   <label class="tab_item" for="design">ユーザー</label>
-  <input id="search" type="radio" name="tab_item" checked>
-  <label class="tab_item sub_item" for="search">検索</label>
   <input id="logout" type="radio" name="tab_item">
   <label class="tab_item sub_item" for="logout">ログアウト</label>
   <input id="customer" type="radio" name="tab_item">
@@ -46,11 +47,6 @@
       <p class="c-txtsp"><%= link_to "ユーザー一覧", customers_path %></p>
     </div>
   </div>
-  <div class="tab_content" id="search_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp">サーチ画面</p>
-    </div>
-  </div>
   <div class="tab_content" id="logout_content">
     <div class="tab_content_description">
       <p class="c-txtsp"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></p>
@@ -66,8 +62,9 @@
 </div>
 </div>
 <% else %>
-<div class="top-nav">
-  <%= link_to image_tag("book.jpg",size: '200x200'), "/" %>
+  <h1 class="header_top">
+    <%= link_to 'Books_log', "/", style: 'text-decoration: none;' %>
+  </h1>
   <div class="tabs">
   <input id="all" type="radio" name="tab_item" checked>
   <label class="tab_item" for="all">Book</label>
@@ -108,7 +105,6 @@
       <li class="c-txtsp"><%= link_to "ログイン", new_customer_session_path %></li>
     </div>
   </div>
-</div>
 </div>
 <% end %>
 <%= yield %>

@@ -17,26 +17,9 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-.image1 {
-  background-image: url(image1.jpg);
+.swiper-pagination {
+  position: static !important;
 }
-.image2 {
-  background-image: url(image2.jpg);
-}
-.image3 {
-  background-image: url(image3.jpg);
-}
-.image4 {
-  background-image: url(image4.jpg);
-}
-.image5 {
-  background-image: url(image5.jpg);
-}
-
-#container{
-  height: 700px;
-}
-
 
 .tabs {
   margin-top: 50px;
@@ -48,7 +31,7 @@
 
 /*タブのスタイル*/
 .tab_item {
-  width: calc((100% - 450px) / 3);
+  width: calc((100% - 300px) / 3);
   height: 50px;
   background-color: #d9d9d9;
   line-height: 50px;
@@ -108,9 +91,9 @@ input[name="tab_item"] {
 .box {
   display: grid;
   gap: 26px;
-  grid-template-columns: repeat(4, minmax(160px, 260px));
+  grid-template-columns: repeat(3, minmax(160px, 260px));
   margin-top: 6%;
-  margin-bottom: 50px;
+  margin-left: 25%;
 }
 
 .card{
@@ -127,7 +110,8 @@ input[name="tab_item"] {
 }
 
 .rank{
-  text-align:center
+  margin-left: 50px;
+  margin-top: 80px;
 }
 
 .books{
@@ -185,7 +169,7 @@ body{
     margin-top: 100px;
   }
   h3{
-    margin-top: 100px;
+    margin-top: 150px;
     border: 3px;
   }
 }
@@ -209,4 +193,31 @@ body{
 
 .ranking{
   display: flex;
+}
+
+.circle {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.card-order {
+  position: absolute;
+  left: 30%;
+  top: -30px;
+}
+
+.card-box {
+  position: relative;
+}
+
+.name{
+  font-size: calc(15px + 3vw);
+  font-weight: bold;
+  border-bottom: 1px solid #000!important;
+}
+
+.star{
+  margin-left: 10px;
 }
