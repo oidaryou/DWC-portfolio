@@ -3,8 +3,8 @@
   <div class="row">
       <tbody align="center">
           <div>
-            <h2 class = "top">ようこそ、<%= current_customer.name %>さん！<br>
-               このサイトは、本のレビューを書き込むECサイトになります。<br>
+            <h2 class = "top", style: 'color: #031B31;'>ようこそ、<%= current_customer.name %>さん！<br>
+               このサイトは、本のレビューを書き込むサイトになります。<br>
           </div>
       </tbody>
   </div>
@@ -20,7 +20,7 @@
       <!-- Slides -->
       <% @favorite_ranking_top_5.each_with_index do |top, rank| %>
         <div class="swiper-slide px-5">
-          <h2><%= rank + 1 %></h2>
+          <h2><%= rank + 1 %>位</h2>
           <div class="row">
             <div class="col-md-4">
               <%= attachment_image_tag top[:book], :image, format: 'jpg', class: 'img-fluid ' %>
@@ -78,7 +78,7 @@
       <tbody align="center">
           <div>
             <h2 class = "top">ようこそ、Books_logへ！<br>
-               このサイトは、本のレビューを書き込むECサイトになります。<br>
+               このサイトは、本のレビューを書き込むサイトになります。<br>
                会員ではない方もレビューの閲覧は可能ですが、フォロー、お気に入り機能、レビューの書き込みはできません<br>
                上記の機能を使用するためには、会員登録が必要となります。</h2>
           </div>
