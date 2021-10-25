@@ -45,6 +45,22 @@
   transition: all 0.2s ease;
 }
 
+/*ログイン前のタブのスタイル*/
+.tab_items {
+  width: calc(100% / 3);
+  height: 50px;
+  background-color: #002A45;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #FFFFFE;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
 .sub_item {
   width: 150px;
 }
@@ -80,8 +96,8 @@ input[name="tab_item"] {
 
 /*選択されているタブのスタイルを変える*/
 .tabs input:checked + .tab_item {
-  background-color: rgb(111,68,0);
-  color: #fff;
+  background-color: #B29271;
+  color: #031B31;
 }
 
 .top-nav {
@@ -91,7 +107,15 @@ input[name="tab_item"] {
 .box {
   display: grid;
   gap: 26px;
-  grid-template-columns: repeat(3, minmax(160px, 260px));
+  grid-template-columns: repeat(3, minmax(260px, 260px));
+  margin-top: 6%;
+  margin-left: 25%;
+}
+
+.customer-box{
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(4, minmax(160px, 260px));
   margin-top: 6%;
   margin-left: 25%;
 }
@@ -105,6 +129,8 @@ input[name="tab_item"] {
 }
 
 .c-txtsp {
+  font-size: 25px;
+  font-weight: 900;
   display: inline-block;
   margin: 0 20px;
 }
@@ -226,4 +252,9 @@ body{
 
 .customer-name {
   max-width: 30%;
+}
+
+.top{
+  font-weight:  bold;
+  color: #031B31;
 }

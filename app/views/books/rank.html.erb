@@ -6,7 +6,7 @@
           <div class="card-order"><i class="<%= @font_awesomes[i-1] %>"> <%= "#{i}位" %></i>
             <i class="star fas fa-star"><%= book.favorites.count %></i></div>
             <%= link_to book_path(book.id) do %>
-             <%= attachment_image_tag book,:image, size:"255x210", fallback: "no_image.jpg" %>
+             <%= attachment_image_tag book,:image, size:"255x300", fallback: "no_image.jpg" %>
             <% end %>
           <div class="card-body">
             <h5 class="card-title">
@@ -27,7 +27,7 @@
           <div class="card-order"><i class="<%= @font_awesomes[i-1] %>"> <%= "#{i}位" %></i>
             <i class="star fas fa-star"><%= book.favorites.count %></i></div>
             <%= link_to book_path(book.id) do %>
-             <%= attachment_image_tag book,:image, size:"255x210", fallback: "no_image.jpg" %>
+             <%= attachment_image_tag book,:image, size:"255x300", fallback: "no_image.jpg" %>
             <% end %>
           <div class="card-body">
             <h5 class="card-title">
@@ -48,7 +48,7 @@
           <div class="card-order"><i class="<%= @font_awesomes[i-1] %>"> <%= "#{i}位" %></i>
             <i class="star fas fa-star"><%= book.favorites.count %></i></div>
             <%= link_to book_path(book.id) do %>
-             <%= attachment_image_tag book,:image, size:"255x210", fallback: "no_image.jpg" %>
+             <%= attachment_image_tag book,:image, size:"255x300", fallback: "no_image.jpg" %>
             <% end %>
           <div class="card-body">
             <h5 class="card-title">

@@ -12,6 +12,9 @@ class Customer < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
+  validates :name,
+    length: { minimum: 1, maximum: 10 }
+
   attachment :profile_image
 
   def follow(customer_id)

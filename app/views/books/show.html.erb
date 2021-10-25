@@ -73,10 +73,45 @@
 
   <% else %>
 
-  <p><%= @book.title %></p>
-  <p><%= @book.genre.name %></p>
-  <p><%= @book.synopsis %></p>
-  <%= attachment_image_tag @book, :image, :fill, 100, 100, format: 'jpeg' %>
+  <div class="container mt-5 mb-5">
+
+  <div class="book_show">
+    <div class="row">
+      <div class="col-md-4">
+        <%= attachment_image_tag @book, :image, format: 'jpeg', class: 'd-block mx-auto img-fluid' %>
+      </div>
+      <div class="col-md-8" style="line-height: 1.8;">
+
+        <div class="row mt-3 mt-md-0 pb-1" style="border-bottom: 3px solid #000;">
+          <div class="col-md-3">
+            <strong>タイトル</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @book.title%>
+          </div>
+        </div>
+
+         <div class="row mt-3 pb-1" style="border-bottom: 3px solid #000;">
+          <div class="col-md-3">
+            <strong>ジャンル</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @book.genre.name %>
+          </div>
+        </div>
+
+        <div class="row mt-3 pb-1" style="border-bottom: 3px solid #000;">
+          <div class="col-md-3">
+            <strong>あらすじ</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @book.synopsis %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <table>
   <thead>
     <tr>

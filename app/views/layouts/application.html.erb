@@ -31,32 +31,32 @@
   <label class="tab_item sub_item" for="customer"><i class="fas fa-user"> ユーザー情報</i></label>
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "本一覧", books_path %></p>
-      <p class="c-txtsp"><%= link_to "小説一覧", books_genre_s_path %></p>
-      <p class="c-txtsp"><%= link_to "漫画一覧", books_genre_m_path %></p>
-      <p class="c-txtsp"><%= link_to "雑誌一覧", books_genre_z_path %></p>
+      <p class="c-txtsp"><%= link_to "本一覧", books_path, style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><%= link_to "小説一覧", books_genre_s_path, style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><%= link_to "漫画一覧", books_genre_m_path, style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><%= link_to "雑誌一覧", books_genre_z_path, style: 'color: #031B31;' %></p>
     </div>
   </div>
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "ランキングTOP3", books_rank_path %></p>
+      <p class="c-txtsp"><%= link_to "ランキングTOP3", books_rank_path, style: 'color: #031B31;' %></p>
     </div>
   </div>
   <div class="tab_content" id="design_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "ユーザー一覧", customers_path %></p>
+      <p class="c-txtsp"><%= link_to "ユーザー一覧", customers_path, style: 'color: #031B31;' %></p>
     </div>
   </div>
   <div class="tab_content" id="logout_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></p>
+      <p class="c-txtsp"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, style: 'color: #031B31;' %></p>
     </div>
   </div>
   <div class="tab_content" id="customer_content">
     <div class="tab_content_description">
-      <p class="c-txtsp"><%= link_to "ユーザー情報", customer_path(current_customer) %></p>
-      <p class="c-txtsp"><%= link_to "ブックマーク一覧", customers_mypage_path(current_customer) %></p>
-      <p class="c-txtsp"><%= link_to "いいね一覧", customers_like_path(current_customer) %></p>
+      <p class="c-txtsp"><%= link_to "ユーザー情報", customer_path(current_customer), style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><%= link_to "ブックマーク一覧", customers_mypage_path(current_customer), style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><%= link_to "いいね一覧", customers_like_path(current_customer), style: 'color: #031B31;' %></p>
     </div>
   </div>
 </div>
@@ -67,15 +67,11 @@
   </h1>
   <div class="tabs">
   <input id="all" type="radio" name="tab_item" checked>
-  <label class="tab_item" for="all"><i class="fas fa-book-open">Book</i></label>
+  <label class="tab_items" for="all"><i class="fas fa-book-open">Book</i></label>
   <input id="programming" type="radio" name="tab_item">
-  <label class="tab_item" for="programming"><i class="fas fa-crown">ランキング</i></label>
-  <input id="design" type="radio" name="tab_item">
-  <label class="tab_item" for="design">ユーザー一覧</label>
-  <input id="search" type="radio" name="tab_item" checked>
-  <label class="tab_item sub_item" for="search">検索</label>
+  <label class="tab_items" for="programming"><i class="fas fa-crown">ランキング</i></label>
   <input id="login" type="radio" name="tab_item">
-  <label class="tab_item sub_item" for="login"><i class="fas fa-sign-in-alt">ログイン</i></label>
+  <label class="tab_items sub_items" for="login"><i class="fas fa-sign-in-alt">ログイン</i></label>
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
       <p class="c-txtsp"><%= link_to "本一覧", books_path %></p>
@@ -87,16 +83,6 @@
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
       <p class="c-txtsp"><%= link_to "ランキングTOP3", books_rank_path %></p>
-    </div>
-  </div>
-  <div class="tab_content" id="design_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp"></p>
-    </div>
-  </div>
-  <div class="tab_content" id="search_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp">サーチ画面</p>
     </div>
   </div>
   <div class="tab_content" id="login_content">
