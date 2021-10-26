@@ -1,5 +1,12 @@
 <% if customer_signed_in? %>
 
+<% if @review.errors.any? %>
+  <%= @review.errors.count %>件のエラーが発生しました
+  <% @review.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container mt-5 mb-5">
 
   <div class="book_show">
@@ -43,7 +50,7 @@
   </div>
 </div>
 
-<%= form_with(model:[@book, @review], data: {remote: true} ) do |f| %>
+<%= form_with(model:[@book, @review], local: true ) do |f| %>
   <%= f.text_area :review %>
   <%= f.hidden_field :book_id, value: @book.id %>
   <%= f.submit 'コメントする' %>

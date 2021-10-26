@@ -3,7 +3,7 @@ ActiveAdmin.register Book do
 
   form do |f|
     f.inputs do
-      f.input :genre_id
+      f.input :genre_id, as: :select, collection: Genre.all.map{|u|[u.name, u.id]}
       f.input :title
       f.input :synopsis
       f.attachment_field :image
