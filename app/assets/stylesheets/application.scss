@@ -216,7 +216,7 @@ body{
 
 .header_top{
   font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
-  text-align:center;
+  text-align: center;
 }
 
 .ranking{
@@ -255,6 +255,13 @@ body{
 }
 
 .top{
+  margin-top: 50px;
+  text-align: center;
   font-weight:  bold;
+  color: #031B31;
+}
+
+.about{
+  text-align: center;
   color: #031B31;
 }
