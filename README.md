@@ -15,7 +15,7 @@
 本が読みたいがどの本を読もうか迷っている人に対し、ジャンルやランキングでおすすめの本を見つける。お気に入りの趣味が似ているような人を探してその人が読んでいる本を見ることが出来る。
 
 ## 設計書
-<>
+https://docs.google.com/spreadsheets/d/1cx2-Y1Hu04AZlNEsII9aoLIVqENZ5M3DKdOsVe6UjNk/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1HhQ7PRgV2z_CW-yrr5iVTUjOFCOm8v8GS0vGVlktENo/edit?usp=sharing

@@ -14,12 +14,12 @@
         <td><%= link_to customer_path(customer.id) do %>
         <%= customer.name %></td>
         <% end %>
-        <td><%= link_to customer_followings_path(customer.id) do %>
+        <td><%#= link_to customer_followings_path(customer.id) do %>
         <%= customer.followings.count %></td>
-        <% end %>
-        <td><%= link_to customer_followers_path(customer.id) do %>
+        <%# end %>
+        <td><%#= link_to customer_followers_path(customer.id) do %>
         <%= customer.followers.count %>
-        <% end %>
+        <%# end %>
     <% end %>
       </tr>
   </tbody>
