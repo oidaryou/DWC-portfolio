@@ -80,3 +80,4 @@ end
 
 gem 'rubocop'
 gem 'rubocop-rails'
+gem 'dotenv-rails'
