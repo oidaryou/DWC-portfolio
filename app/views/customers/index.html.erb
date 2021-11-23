@@ -2,7 +2,7 @@
 
 <th>ユーザー名検索</th>
 <div class="search-form">
-  <%= form_with url: customers_search_path, method: :get, local: true do |f| %>
+  <%= form_with url: search_customers_path, method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: @keyword %>
     <%= f.submit "検索" %>
   <% end %>

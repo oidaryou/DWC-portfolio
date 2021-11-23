@@ -1,0 +1,46 @@
+<h1 class="header_top">
+  <%= link_to 'Books_log', "/", style: 'text-decoration: none;' %>
+</h1>
+<div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all"><i class="fas fa-book-open"> Book</i></label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming"><i class="fas fa-crown"> ランキング</i></label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design"><i class="fas fa-users"> ユーザー</i></label>
+  <input id="logout" type="radio" name="tab_item">
+  <label class="tab_item sub_item" for="logout"><i class="fas fa-sign-out-alt"> ログアウト</i></label>
+  <input id="customer" type="radio" name="tab_item">
+  <label class="tab_item sub_item" for="customer"><i class="fas fa-user"> ユーザー情報</i></label>
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><i class="fas fa-book"></i> <%= link_to "本一覧", books_path, style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-book"></i> <%= link_to "小説一覧", genre_s_books_path, style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-book"></i> <%= link_to "漫画一覧", genre_m_books_path, style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-book"></i> <%= link_to "雑誌一覧", genre_z_books_path, style: 'color: #031B31;' %></p>
+    </div>
+  </div>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><i class="fas fa-crown"></i> <%= link_to "ジャンル別ランキングTOP3", rank_books_path, style: 'color: #031B31;' %></p>
+    </div>
+  </div>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><i class="fas fa-users"></i> <%= link_to "ユーザー一覧", customers_path, style: 'color: #031B31;' %></p>
+    </div>
+  </div>
+  <div class="tab_content" id="logout_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp"><i class="fas fa-sign-out-alt"></i> <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, style: 'color: #031B31;' %></p>
+    </div>
+  </div>
+  <div class="tab_content" id="customer_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp "><i class="fas fa-user"></i> <%= link_to "ユーザー情報", customer_path(current_customer), style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-star star"></i> <%= link_to "お気に入り一覧", mypage_customers_path(current_customer), style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-heart heart"></i> <%= link_to "いいね一覧", like_customers_path(current_customer), style: 'color: #031B31;' %></p>
+    </div>
+  </div>
+  </div>
+</div>

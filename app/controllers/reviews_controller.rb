@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
     @review = current_customer.reviews.new(review_params)
     @review.book_id = @book.id
-    @review.score = Language.get_data(review_params[:review])  #この行を追加
+    @review.score = Language.get_data(review_params[:review])  #この行を追加+
 
     if @review.save
     redirect_to book_path(params[:book_id])

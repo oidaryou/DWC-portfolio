@@ -31,7 +31,7 @@
     <% end %>
   </div>
   <div class="box_box">
-  <%= link_to "ブックマーク一覧", customers_mypage_path(@customer.id), style: 'text-decoration: none;' %></div>
-  <div class="box_box"><%= link_to "いいね一覧", customers_like_path(@customer.id), style: 'text-decoration: none;' %></div>
+  <%= link_to "ブックマーク一覧", mypage_customers_path(@customer.id), style: 'text-decoration: none;' %></div>
+  <div class="box_box"><%= link_to "いいね一覧", like_customers_path(@customer.id), style: 'text-decoration: none;' %></div>
   </div>
 </div>

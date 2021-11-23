@@ -3,24 +3,28 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :customers
   root to: 'homes#top'
-  get 'books_search' => 'books#search'
-  get 'customers_search' => 'customers#search'
-  get 'customers/mypage' => 'customers#mypage'
-  get 'customers/like' => 'customers#like'
-  get 'books/genre_s' => 'books#genre_s'
-  get 'books/genre_m' => 'books#genre_m'
-  get 'books/genre_z' => 'books#genre_z'
-  get 'books/rank' => 'books#rank'
 
   resources :favorites, only: %i[create destroy]
   resources :genres, only: %i[create destroy index edit update]
   resources :customers, only: %i[show index edit update] do
+    collection do
+      get 'search'
+      get 'mypage'
+      get 'like'
+    end
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
     end
 
   resources :books do
+    collection do
+      get 'search'
+      get 'genre_s'
+      get 'genre_m'
+      get 'genre_z'
+      get 'rank'
+    end
     resource :favorites, only: %i[create destroy]
     resources :reviews, only: %i[create destroy index edit] do
       resources :likes, only: %i[create destroy]
