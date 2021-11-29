@@ -38,8 +38,8 @@
   <div class="tab_content" id="customer_content">
     <div class="tab_content_description">
       <p class="c-txtsp "><i class="fas fa-user"></i> <%= link_to "ユーザー情報", customer_path(current_customer), style: 'color: #031B31;' %></p>
-      <p class="c-txtsp"><i class="fas fa-star star"></i> <%= link_to "お気に入り一覧", mypage_customers_path(current_customer), style: 'color: #031B31;' %></p>
-      <p class="c-txtsp"><i class="fas fa-heart heart"></i> <%= link_to "いいね一覧", like_customers_path(current_customer), style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-star star"></i> <%= link_to "お気に入り一覧", mypage_customer_path(current_customer), style: 'color: #031B31;' %></p>
+      <p class="c-txtsp"><i class="fas fa-heart heart"></i> <%= link_to "いいね一覧", like_customer_path(current_customer), style: 'color: #031B31;' %></p>
     </div>
   </div>
   </div>

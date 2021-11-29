@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   resources :customers, only: %i[show index edit update] do
     collection do
       get 'search'
+    end
+    member do
       get 'mypage'
       get 'like'
     end
+
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'

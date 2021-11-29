@@ -21,10 +21,12 @@ class CustomersController < ApplicationController
   end
 
   def mypage
+    @customer = Customer.find(params[:id])
     @favorites = Favorite.where(customer_id: current_customer.id)
   end
 
   def like
+    @customer = Customer.find(params[:id])
     @likes = Like.where(customer_id: current_customer.id)
   end
 
