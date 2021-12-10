@@ -62,6 +62,7 @@
       <th>ユーザーネーム</th>
       <th>レビュー内容</th>
       <th>いいね数</th>
+      <th>レビューの感情分析スコア</th>
     </tr>
   </thead>
   <tbody>
@@ -72,8 +73,8 @@
             <% end %>
           </td>
           <td><%= review.review %></td>
-          <td class="sentiment-score">本文の感情分析スコア<%= review.score %></td>
           <td id="review_<%= review.id %>"><%= render 'books/like', review: review %></td>
+          <td class="sentiment-score"><%= review.score %></td>
         </tr>
       <% end %>
   </tbody>
@@ -86,7 +87,7 @@
   <div class="book_show">
     <div class="row">
       <div class="col-md-4">
-        <%= attachment_image_tag @book, :image, format: 'jpeg', class: 'd-block mx-auto img-fluid' %>
+        <%= attachment_image_tag @book, :image, fallback: "no_image.jpg", format: 'jpeg', class: 'd-block mx-auto img-fluid' %>
       </div>
       <div class="col-md-8" style="line-height: 1.8;">
 
@@ -126,9 +127,7 @@
       <th>ユーザーネーム</th>
       <th>レビュー内容</th>
       <th>いいね数</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>レビューの感情分析スコア</th>
       </tr>
   </thead>
   <tbody>
@@ -137,8 +136,7 @@
         <td><%= review.customer.name %></td>
         <td><%= review.review %></td>
         <td><%= review.likes.count %></td>
-        <td></td>
-        <td></td>
+        <td class="sentiment-score"><%= review.score %></td>
         　<% end %>
           </tr>
         <% end %>
