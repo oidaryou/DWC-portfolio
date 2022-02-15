@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   validates :name,
-    length: { minimum: 1, maximum: 7 }
+    length: { minimum: 1, maximum: 8 }
 
   attachment :profile_image
 
